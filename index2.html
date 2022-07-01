@@ -1,0 +1,1137 @@
+
+<!--  if try hosting this on -->
+
+<!--uid cord person x y z -->
+<!--uid chat person data -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <meta name="description" content="">  
+
+    <style>
+
+        .viewport{perspective: 700px;}
+        .camera{
+            transform-style: preserve-3d;
+            transform: rotateX(-20deg) rotateY(90deg) translate3d(200px,515px,-250px);}
+        #plane{
+            width: 300px; height: 300px; 
+            position: absolute; 
+            transform-origin: 0px 0px -600px;
+            transform: rotateX(90deg) translate3d(0px, 0px,-600px) ; 
+            background: blue;}
+        #plane2{
+            width: 300px; height: 300px; 
+            position: absolute; 
+            transform-origin: 0px 0px -600px;
+            transform: rotateX(0deg) translate3d(0px, 0px,-600px) ; 
+            background: blue;}
+        #plane3{
+            width: 300px; height: 300px; 
+            position: absolute; 
+            transform-origin: 300px -600px -300px;
+            transform: rotateY(90deg) translate3d(300px, -600px,-300px) ; 
+            background: red;}
+        #left{
+            z-index: 100000;
+            position: absolute; 
+            left: 35%;
+            top:80%;
+            width: 13%;
+            height:10%;
+        }
+        #right{
+            z-index: 100000;
+            position: absolute; 
+            left: 63%;
+            top:80%;
+            width: 13%;
+            height:10%;
+        }
+
+                #myid3{
+                    border: yellow 5px;
+        }
+        #up{
+            z-index: 100000;
+            position: absolute; 
+            left: 48%;
+            top:70%;
+            width: 15%;
+            height:10%;
+        }
+        #down{
+            z-index: 100000;
+            position: absolute; 
+            left: 48%;
+            top:90%;
+            width: 15%;
+            height:10%;
+        }
+
+        #stop{
+            z-index: 100000;
+            position: absolute; 
+            left: 48%;
+            top:80%;
+            width: 15%;
+            height:10%;
+        }
+        #z1{
+            z-index: 100000;
+            position: absolute; 
+            left: 63%;
+            top:70%;
+            width: 13%;
+            height:10%;
+        }
+        #z2{
+            z-index: 100000;
+            position: absolute; 
+            left: 35%;
+            top:70%;
+            width: 13%;
+            height:10%;
+        }
+        #rot1{
+            z-index: 100000;
+            position: absolute; 
+            left: 63%;
+            top:90%;
+            width: 13%;
+            height:10%;
+        }
+        #rot2{
+            z-index: 100000;
+            position: absolute; 
+            left: 35%;
+            top:90%;
+            width: 13%;
+            height:10%;
+        }
+
+
+        #texbox{
+            z-index: 100000;
+            position: absolute; 
+            background-color: black;
+            left: 0%;
+            top:0%;
+            width: 170px;
+            height:190px;
+        }
+
+        #texbox2{
+            z-index: 100000;
+            position: absolute; 
+            background-color: black;
+            left: 0%;
+            top:0%;
+            width: 300px;
+            height:390px;
+        }
+
+        #mode{
+            z-index: 100000;
+            position: absolute; 
+
+            left: 20%;
+            top:90%;
+            width: 15%;
+            height:10%;
+        }
+
+    </style>
+
+</head>
+<body style="background-image: url('https://wallpapercave.com/wp/vWTTP6j.jpg');">
+    <div id="credits">
+    </div>
+<div class="viewport" >
+    <div id="sean" class="camera">
+    </div>
+</div>
+    <div id="left"     onclick="UIchange('z-');">
+        <img  id="idL" src="photes/AL1.png" alt="X+" width="100%" height="100%">
+    </div>
+    <div id="right"    onclick="UIchange('z+');">
+        <img id="idR" src="photes/AR1.png" alt="X+" width="100%" height="100%">
+    </div>
+    <div id="up"       onclick="UIchange('y-');">
+        <img id="idU" src="" alt="X+" width="100%" height="100%"></div>
+    <div id="down"     onclick="UIchange('y+');">
+        <img  id="idD" src="" alt="X+" width="100%" height="100%">
+    </div>
+    <div id="stop"     onclick="UIchange('none');"></div>
+    <div id="z1"       onclick="UIchange('x-');">
+        <img  id="idLD" src="" alt="X-" width="100%" height="100%"> 
+    </div>
+    <div id="z2"       onclick="UIchange('x+');">
+        <img  id="idRD" src="" alt="X+" width="100%" height="100%">
+    </div>
+
+
+    <div id="rot1"     onclick="UIchange('r+');">
+<img  id="idLU" src="photes/ARU.png" alt="X+" width="100%" height="100%">
+    </div>
+    <div id="rot2"     onclick="UIchange('r-');">
+<img id="idRU" src="photes/ALU.png" alt="X+" width="100%" height="100%">
+   
+    </div>
+
+    <div id="texbox"     onclick="">
+            <label for="fname" style="color: white;">ID</label><br>
+            <input type="text" id="boxID" name="fname"><br>
+            <label for="fname" style="color: white;">HTML</label><br>
+            <input type="text" id="HTML" name="fname"><br>
+            <label for="fname" style="color: white;">IFRAM</label><br>
+            <input type="text" id="IFRam" name="fname"><br>
+            <button onclick="addHTML()">Change</button><button onclick="ONHTML()">ON HTMl</button></br>
+            <button onclick="offHTML()">OFF HTML</button>
+            <button onclick="DELL()">DELL</button></br>
+            <button onclick="MaptoJSON();">MAKEJSON</button></br>
+            <button onclick="SaveMaptoJSON();">Save_MAP</button></br>
+    </div>
+
+
+    <div id="texbox2"     onclick="">
+            <label for="fname" style="color: white;">AU1</label>
+            <input type="text" id="AU1" name="fname"><br>
+            <label for="fname" style="color: white;">AD1</label>
+            <input type="text" id="AD1" name="fname"><br>
+            <label for="fname" style="color: white;">AL1</label>
+            <input type="text" id="AL1" name="fname"><br>
+            <label for="fname" style="color: white;">AR1</label>
+            <input type="text" id="AR1" name="fname"><br>
+            <label for="fname" style="color: white;">ARD</label>
+            <input type="text" id="ARD1" name="fname"><br>
+            <label for="fname" style="color: white;">ALD</label>
+            <input type="text" id="ALD1" name="fname"><br>
+
+            <label for="fname" style="color: white;">ALU</label>
+            <input type="text" id="ALU1" name="fname"><br>
+
+            <label for="fname" style="color: white;">ARU</label>
+            <input type="text" id="ARU1" name="fname"><br>
+
+            <label for="fname" style="color: white;">CR1</label>
+            <input type="text" id="CR1" name="fname"><br>
+
+
+            <label for="fname" style="color: white;">CR2</label>
+            <input type="text" id="CR2" name="fname"><br>
+
+            <label for="fname" style="color: white;">CL1</label>
+            <input type="text" id="CL1" name="fname"><br>
+
+
+            <label for="fname" style="color: white;">CL2</label>
+            <input type="text" id="CL2" name="fname"><br>
+
+
+            <label for="fname" style="color: white;">CJ1</label>
+            <input type="text" id="CJ1" name="fname"><br>
+            
+            <label for="fname" style="color: white;">CS1</label>
+            <input type="text" id="CS1" name="fname"><br>
+
+
+            <label for="fname" style="color: white;">CS2</label>
+            <input type="text" id="CS2" name="fname"><br>
+
+            <label for="fname" style="color: white;">mod</label>
+            <input type="text" id="modeid" name="fname"><br>
+
+            <label for="fname" style="color: white;">BGI</label>
+            <input type="text" id="BGID" name="fname"><br>
+
+
+
+
+            <button onclick="changemap()">change map</button>
+    </div>
+
+    <div id="mode"     onclick="">
+
+<img id="modeimg"  alt="X+" width="0px" height="0px">
+
+    </div>
+<script type="text/javascript">
+UIchange("none");
+function offHTML(){
+    mytext="";
+    for (let i = 0; i < array_spaces.length; i++) {
+      mytext += addspaceNoHTML(array_spaces[i]);
+    }
+    document.getElementById("sean").innerHTML=mytext;
+}
+
+function ONHTML(){
+    document.getElementById("sean").innerHTML=get_space();
+}
+
+function delletDiv(div) {
+
+    newarray=[];
+    for (let i = 0; i < array_spaces.length; i++) {
+        if (array_spaces[i][0]!=div) {
+            newarray.push(array_spaces[i]);
+        };
+    }
+    return newarray;
+}
+
+function DELL(){
+    array_spaces=delletDiv(document.getElementById("boxID").value);
+    ONHTML();
+}
+
+
+
+function addspaceNoHTML(array) {
+    if (array[4]==0) {
+        string="<div onclick=\"selectDIV('"+array[0]+"','gold',0);\" id=\""+array[0]+"\" style=\"width: 300px; height: 300px; position: absolute;transform-origin: 0px 0px 0px; transform: translate3d("+array[1]*300+"px,"+array[2]*300+"px,"+array[3]*300+"px) rotateX(90deg); background: blue;\"   > ";
+    }
+    if (array[4]==1) {
+       string="<div onclick=\"selectDIV('"+array[0]+"','gold',0);\" id=\""+array[0]+"\" style=\"width: 300px; height: 300px; position: absolute;transform-origin: 0px 0px 0px; transform: translate3d("+(array[1]*300)+"px,"+(array[2]*300-300)+"px,"+array[3]*300+"px) rotateX(0deg); background: red;\"  > ";
+    }
+
+    if (array[4]==2) {
+       string="<div onclick=\"selectDIV('"+array[0]+"','gold',0);\" id=\""+array[0]+"\" style=\"width: 300px; height: 300px; position: absolute;transform-origin: 0px 0px 0px; transform: translate3d("+(array[1]*300+300)+"px,"+(array[2]*300-300)+"px,"+(array[3]*300+300)+"px) rotateY(90deg); background: green;\" \"> ";
+    }
+    string+="</div>";
+    return string;
+}
+
+
+function addHTML() {
+    for (let i = 0; i < array_spaces.length; i++) {
+        if (array_spaces[i][0]==document.getElementById("boxID").value){
+            if (document.getElementById("HTML").value!=""){
+                array_spaces[i][5]=document.getElementById("HTML").value;
+            }
+            else{
+            array_spaces[i][5]="<iframe width=\"100%\" height=\"100%\" src=\""+document.getElementById("IFRam").value+"\" title=\"\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+            }
+        }
+    }
+    document.getElementById("sean").innerHTML=get_space();
+}
+
+function UIchange(argument) {
+
+    if (mode==0){
+        direction=argument;
+        if (direction=='y+'){
+            direction='y-';
+
+        }
+        else{
+            if (direction=='y-'){
+                direction='y+';
+
+            }
+        }
+    }
+    if (mode==1) {
+        if (argument=='y+') {
+            adedvalue[1]=adedvalue[1]+1;
+            holdingvlaue=-1;
+            doAddStuff();
+        };
+        if (argument=='y-') {
+            adedvalue[1]=adedvalue[1]-1;
+            holdingvlaue=-1;
+            doAddStuff();
+        };
+        if (argument=='x+') {
+            adedvalue[0]=adedvalue[0]-1;
+            holdingvlaue=-1;
+            doAddStuff();
+        };
+        if (argument=='x-') {
+            adedvalue[0]=adedvalue[0]+1;
+            holdingvlaue=-1;
+            doAddStuff();
+        };
+
+        if (argument=='z-') {
+            adedvalue[2]=adedvalue[2]-1;
+            holdingvlaue=-1;
+            doAddStuff();
+        };
+        if (argument=='z+') {
+            adedvalue[2]=adedvalue[2]+1;
+            holdingvlaue=-1;
+            doAddStuff();
+        };
+
+        if (argument=='r-') {
+            adedvalue[3]=(adedvalue[3]-1)%3;
+            holdingvlaue=-1;
+            doAddStuff();
+        };
+        if (argument=='r+') {
+            adedvalue[3]=(adedvalue[3]+1)%3;
+            holdingvlaue=-1;
+            doAddStuff();
+        };
+        if (argument=='none') {
+
+            thisval=getNewID_For_div();
+            val = get_spot_by_pos(adedvalue);
+            if (val==-1){
+                array_spaces.push([thisval,adedvalue[0],adedvalue[1],adedvalue[2],adedvalue[3],"","Ifram"]);
+                document.getElementById("sean").innerHTML=get_space();
+            }
+        };
+    };
+    if (mode==2){
+        if (argument=='y-') {
+            jump();
+            return;
+        }
+        if (argument=='y+') {
+            fall();
+            return;
+        }
+        direction=argument;
+    }
+    if (mode==3){
+    }
+}
+
+
+function doAddStuff() {
+        offHTML();
+        val = get_spot_by_pos(adedvalue);
+        if (val==-1){
+            document.getElementById("sean").innerHTML+=addspace(['hold_div',adedvalue[0],adedvalue[1],adedvalue[2],adedvalue[3],"",""]);selectDIV('hold_div','black',1);
+        }
+        else{selectDIV(val,'gold',1);}
+}
+
+function getimgs() {
+        AU=document.getElementById("AU1").value;
+        AD=document.getElementById("AD1").value;
+        AL=document.getElementById("AL1").value;
+        AR=document.getElementById("AR1").value;
+        ALU=document.getElementById("ALU1").value;
+        ALD=document.getElementById("ALD1").value;
+
+        ARU=document.getElementById("ARU1").value;
+
+        ARD=document.getElementById("ARD1").value;
+        FR1=document.getElementById("CR1").value;
+        FR2=document.getElementById("CR2").value;
+        FJ=document.getElementById("CJ1").value;
+        FL1=document.getElementById("CL1").value;
+        FL2=document.getElementById("CL2").value;
+        F1S=document.getElementById("CS1").value;
+        F2S=document.getElementById("CS2").value;
+
+        BG1=document.getElementById("BGID").value;
+        modeimgV=document.getElementById("modeid").value;
+
+    myaddtomap=F1S+"(???A???)"+F2S+"(???A???)"+FJ+"(???A???)"+FL1+"(???A???)"+FL2 +"(???A???)"+ FR1+"(???A???)"+FR2+"(???A???)"+AU+"(???A???)"+AD+"(???A???)"+AL+"(???A???)"+ AR+"(???A???)"+ALU+"(???A???)"+ARU+"(???A???)"+ALD+"(???A???)"+ARD+"(???A???)"+modeimgV+"(???A???)"+BG1;
+
+}
+
+function changemap() {
+
+        AU=document.getElementById("AU1").value;
+        AD=document.getElementById("AD1").value;
+        AL=document.getElementById("AL1").value;
+        AR=document.getElementById("AR1").value;
+        ALU=document.getElementById("ALU1").value;
+        ALD=document.getElementById("ALD1").value;
+
+        ARU=document.getElementById("ARU1").value;
+
+        ARD=document.getElementById("ARD1").value;
+        FR1=document.getElementById("CR1").value;
+        FR2=document.getElementById("CR2").value;
+        FJ=document.getElementById("CJ1").value;
+        FL1=document.getElementById("CL1").value;
+        FL2=document.getElementById("CL2").value;
+        F1S=document.getElementById("CS1").value;
+        F2S=document.getElementById("CS2").value;
+
+        F1S=document.getElementById("CS1").value;
+        F2S=document.getElementById("CS2").value;
+
+        BG1=document.getElementById("BGID").value;
+        modeimgV=document.getElementById("modeid").value;
+        document.body.style.backgroundImage = "url('"+BG1+"')";
+
+    document.getElementById("idU").src=AU;
+    document.getElementById("idD").src=AD;
+    document.getElementById("idL").src=AL;
+    document.getElementById("idR").src=AR;
+    document.getElementById("idLU").src=ALU;
+    document.getElementById("idRU").src=ARU;
+    document.getElementById("idLD").src=ALD;
+    document.getElementById("idRD").src=ARD;
+
+    document.getElementById("modeimg").src=modeimgV;
+
+
+
+    myaddtomap=F1S+"(???A???)"+F2S+"(???A???)"+FJ+"(???A???)"+FL1+"(???A???)"+FL2 +"(???A???)"+ FR1+"(???A???)"+FR2+"(???A???)"+AU+"(???A???)"+AD+"(???A???)"+AL+"(???A???)"+ AR+"(???A???)"+ALU+"(???A???)"+ARU+"(???A???)"+ALD+"(???A???)"+ARD+"(???A???)"+modeimgV+"(???A???)"+BG1;
+
+
+}
+myaddtomap="";
+
+function  modechange() {
+    mode=(mode+1)%4;
+    if (mode==0) {
+
+        document.getElementById("sean").innerHTML=get_space();
+        document.getElementById("texbox").style.visibility="";
+                document.getElementById("texbox2").style.visibility="hidden";
+    };
+    if (mode==1) {
+        valueold=[0,0,0,3];
+        adedvalue=[Math.floor(-camerax/300)+1,Math.floor(-cameray/300)+2,Math.floor(-cameraz/300),0];
+        holdingvlaue=-1;
+        doAddStuff();
+        document.getElementById("texbox").style.visibility="hidden";
+                document.getElementById("texbox2").style.visibility="hidden";
+    };
+    if (mode==2){
+        document.getElementById("sean").innerHTML=get_space();
+        document.getElementById("texbox").style.visibility="hidden";
+        document.getElementById("texbox2").style.visibility="hidden";
+    }
+    if (mode==3){
+        document.getElementById("sean").innerHTML=get_space();
+        document.getElementById("texbox").style.visibility="hidden";
+        document.getElementById("texbox2").style.visibility="";
+        document.getElementById("AU1").value=AU;
+        document.getElementById("AD1").value=AD;
+        document.getElementById("AL1").value=AL;
+        document.getElementById("AR1").value=AR;
+        document.getElementById("ALU1").value=ALU;
+        document.getElementById("ALD1").value=ALD;
+        document.getElementById("ARU1").value=ARU;
+        document.getElementById("ARD1").value=ARD;
+        document.getElementById("CR1").value=FR1;
+        document.getElementById("CR2").value=FR2;
+        document.getElementById("CJ1").value=FJ;
+        document.getElementById("CL1").value=FL1;
+        document.getElementById("CL2").value=FL2;
+        document.getElementById("CS1").value=F1S;
+        document.getElementById("CS2").value=F2S;
+
+        document.getElementById("BGID").value=BG1;
+        document.getElementById("modeid").value=modeimgV;
+    }
+}
+
+oldid="";
+
+function selectDIV(id,number,themode) {
+    if (themode!=mode) {
+        return;
+    };
+    try {
+    document.getElementById(oldid).style.boxShadow="inset 0px 0px 0px 0px gold";
+    }
+    catch (error) {
+    }
+    if (mode==0 || mode==1) {
+        try {
+    document.getElementById(id).style.boxShadow="inset 0px 0px 0px 10px "+number;//boxID
+document.getElementById("boxID").value=id;
+        }catch (error) {}
+    };
+    oldid=id;
+}
+
+var camerax=200;
+var cameray=515;
+var cameraz=-250;
+var newcamerax=200;
+var newcameray=515;
+var newcameraz=-250;
+var rotx=0;
+var roty=30;
+var speed = 0.1;
+var direction="none";
+document.getElementsByClassName("camera")[0].style.transform = "rotateX("+rotx+"deg) rotateY("+roty+"deg) translate3d("+camerax+"px,"+cameray+"px,"+cameraz+"px)";
+function  moveforward(direction,speed){
+    timenow= Date.now();
+    distrance = (timenow-lastmovetime)*speed;
+    if (direction=="none") {lastmovetime = timenow; return;}
+    if (direction=="x+"){camerax+=distrance;}
+    if (direction=="x-"){camerax-=distrance;}
+    if (direction=="y+"){cameray+=distrance;}
+    if (direction=="y-"){cameray-=distrance;}
+    if (direction=="z-"){cameraz+=distrance;}
+    if (direction=="z+"){cameraz-=distrance;}
+    if (direction=="r-"){roty-=distrance/20;}
+    if (direction=="r+"){roty+=distrance/20;}
+    if (roty>=40) {roty=40;}
+    if (roty<=20) {roty=20;}
+    document.getElementsByClassName("camera")[0].style.transform = "rotateX("+rotx+"deg) rotateY("+roty+"deg) translate3d("+camerax+"px,"+cameray+"px,"+cameraz+"px)";
+     lastmovetime = timenow;
+    return;
+}
+
+
+
+function addspace(array) {
+    if (array[4]==0) {
+        string="<div onclick=\"selectDIV('"+array[0]+"','gold',0);\" id=\""+array[0]+"\" style=\"width: 300px; height: 300px; position: absolute;transform-origin: 0px 0px 0px; transform: translate3d("+array[1]*300+"px,"+array[2]*300+"px,"+array[3]*300+"px) rotateX(90deg); background: blue;\"   > ";
+    }
+    if (array[4]==1) {
+       string="<div onclick=\"selectDIV('"+array[0]+"','gold',0);\" id=\""+array[0]+"\" style=\"width: 300px; height: 300px; position: absolute;transform-origin: 0px 0px 0px; transform: translate3d("+(array[1]*300)+"px,"+(array[2]*300-300)+"px,"+array[3]*300+"px) rotateX(0deg); background: red;\"  > ";
+    }
+
+    if (array[4]==2) {
+       string="<div onclick=\"selectDIV('"+array[0]+"','gold',0);\" id=\""+array[0]+"\" style=\"width: 300px; height: 300px; position: absolute;transform-origin: 0px 0px 0px; transform: translate3d("+(array[1]*300+300)+"px,"+(array[2]*300-300)+"px,"+(array[3]*300+300)+"px) rotateY(90deg); background: green;\" \"> ";
+    }
+    string+=array[5];
+    string+="</div>";
+    return string;
+}
+
+selected="this";
+var array_spaces= [
+['1',0,0,0,0,"thisisit","Ifram"],
+['2',0,0,0,1,"","Ifram"],
+['3',0,0,0,2,"","Ifram"],
+['4',1,-1,0,0,"","Ifram"],
+['5',0,0,1,0,"","Ifram"],
+['6',1,0,1,0,"","Ifram"],
+['7',1,0,1,1,"","Ifram"],
+];
+json='';
+
+
+F1S="";
+F2S="";
+FJ="";
+
+FL1="";
+FL2="";
+
+FR1="";
+FR2="";
+
+AU="";
+
+BG1="";
+modeimgV="";
+
+function getMAPformID(){
+
+//post_responce("http://localhost:8000/doit?key=d707e9248cf67fa9c4fb84b5f2c05afb4865fb8c2c0a0c6681773fde18c254a8&action_type=get_post&usekkey=" ,changetomap,"varible")
+changetomap('',"A")
+
+}
+
+function changetomap(A,B){
+
+    //val = JSON.parse(A);
+    //console.log(val);
+    //mymaptext=val["text"];
+    alert("A");
+    mymaptext=A;
+
+
+    mymaptext=mymaptext.replaceAll('(___P___)', '"');
+    mymaptext=mymaptext.replaceAll('(___F___)','/');
+    mymaptext=mymaptext.replaceAll('(___B___)','\\');
+    mymaptext=mymaptext.replaceAll('(___C___)',':');
+    mymaptext=mymaptext.replaceAll('(___E___)','=');
+    mymaptext=mymaptext.replaceAll('(___S___)',' ');
+    mymaptext=mymaptext.replaceAll('(___2___)','<');
+    mymaptext=mymaptext.replaceAll('(___1___)','>');
+        mymaptext=mymaptext.replaceAll('|','?');
+     mymaptext=mymaptext.replaceAll('(___I___)','|');
+
+    mymaptext=mymaptext.replaceAll('(___A___)','&');
+    json=mymaptext;
+    console.log("myjon");
+    console.log(json);
+    JSONtoMap(json)
+    //alert(A)
+
+}
+
+//getMAPformID();
+JSONtoMap("")
+function JSONtoMap(json){
+
+json='338(???M???)-1(???M???)0(???M???)0(???M???)0(???M???)<iframe width="100%" height="100%" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>(???M???)Ifram(???M???)39(???M???)0(???M???)0(???M???)0(???M???)0(???M???)<iframe width="100%" height="100%" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>(???M???)Ifram(???M???)41(???M???)2(???M???)0(???M???)-2(???M???)2(???M???)<div style="width: 300px; height: 300px; transform: scale(-1, 1)";> <img style="position: absolute; top: 0px;left: 0px;" src="https://i.ibb.co/3CWJbhC/art.jpg" width="300" height="300"> <h1 style="position: absolute; top: 0px;left: 0px;"> <a href="https://www.w3schools.com/html/html_links.asp">Click Here </a></h1> </div> (???M???)Ifram(???M???)42(???M???)2(???M???)0(???M???)-2(???M???)0(???M???)<iframe width="100%" height="100%" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>(???M???)Ifram(???M???)47(???M???)2(???M???)0(???M???)-1(???M???)0(???M???)<iframe width="100%" height="100%" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>(???M???)Ifram(???M???)48(???M???)2(???M???)0(???M???)0(???M???)0(???M???)<iframe width="600" height="300" src="https://www.youtube.com/embed/wBQB4p-pNmU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>(???M???)Ifram(???M???)49(???M???)1(???M???)0(???M???)0(???M???)0(???M???)<iframe width="100%" height="100%" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>(???M???)Ifram(???M???)51(???M???)2(???M???)0(???M???)-2(???M???)1(???M???)<iframe width="100%" height="100%" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>(???M???)Ifram(???M???)58(???M???)2(???M???)-1(???M???)-3(???M???)0(???M???)<iframe width="100%" height="100%" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>(???M???)Ifram(???M???)59(???M???)3(???M???)-1(???M???)-3(???M???)0(???M???) <img src="https://i.pinimg.com/736x/54/e1/40/54e140ebf61c153dda057cfbab2bbedf.jpg" alt="Girl in a jacket" width="300" height="300"> </img>(???M???)Ifram(???M???)339(???M???)0(???M???)0(???M???)-1(???M???)1(???M???)<img src="https://misswarrior.github.io/demo/Frame3.jpg" width="300" height="300">(???M???)Ifram(???M???)https://i.ibb.co/3zbwj0V/stop2.png(???A???)https://i.ibb.co/3zbwj0V/stop2.png(???A???)https://i.ibb.co/KVLFzZF/jump.png(???A???)https://i.ibb.co/NFNSCjr/right2.png(???A???)https://i.ibb.co/bQ4Qn5V/right1.png(???A???)https://i.ibb.co/MR9fkXs/left2.png(???A???)https://i.ibb.co/7XpV2Hf/left1.png(???A???)https://i.ibb.co/MR2Symc/AU.png(???A???)https://i.ibb.co/cL80HJd/AD.png(???A???)https://i.ibb.co/vwFnr8t/AR1.png(???A???)https://i.ibb.co/BK4CYz9/AL1.png(???A???)https://i.ibb.co/Npb4kcw/ARU.png(???A???)https://i.ibb.co/j8JBkzd/ALU.png(???A???)https://i.ibb.co/HG6yGRb/ALD.png(???A???)https://i.ibb.co/pX3tq7s/ARD.png(???A???)https://i.ibb.co/phLFzFZ/c.png(???A???)https://i.ibb.co/xqJQ3Jv/bg.png doit:666:13';
+    console.log("jsoninmap")
+    console.log(json)
+    myarray=json.split("(???M???)");
+
+
+    console.log(myarray);
+    for (let i = 0; i < (myarray.length/7)-1; i++) {
+        array_spaces.push([myarray[i*7+0],myarray[i*7+1],myarray[i*7+2],myarray[i*7+3],myarray[i*7+4],myarray[i*7+5],myarray[i*7+6]]);
+    }
+
+    values = myarray[myarray.length-1].split("(???A???)");
+    F1S = values[0];
+    F2S = values[1];
+    FJ=values[2];
+    FL1=values[3];
+    FL2=values[4];
+    FR1=values[5];
+    FR2=values[6];
+    AU=values[7];
+    document.getElementById("idU").src=AU;
+    AD=values[8];
+    document.getElementById("idD").src=AD;
+    AL=values[10];
+    document.getElementById("idL").src=AL;
+    AR=values[9];
+    document.getElementById("idR").src=AR;
+    ALU=values[11];
+    document.getElementById("idLU").src=ALU;
+    ARU=values[12];
+    document.getElementById("idRU").src=ARU;
+    ARD=values[13];
+    document.getElementById("idRD").src=ARD;
+    ALD=values[14];
+    document.getElementById("idLD").src=ALD;
+    modeimgV=values[15];
+    console.log(values);
+    document.getElementById("modeimg").src=modeimgV;
+
+    BG1=values[16];
+
+    document.body.style.backgroundImage = "url('"+BG1+"')";
+    console.log(values);
+    modechange();
+    modechange();
+    modechange();
+    modechange();
+
+    mytext=get_space();
+    console.log("getspaces");
+    console.log(mytext)
+    console.log("outhere")
+
+    document.getElementById("sean").innerHTML=mytext;
+    setInterval(function(){ update(); },1);
+    setInterval(function(){ changephoto() } ,500 );
+    array_spaces=delletDiv("3")
+
+    array_spaces=delletDiv("6")
+    array_spaces=delletDiv("5")
+    array_spaces=delletDiv("7")
+    array_spaces=delletDiv("4")
+    array_spaces=delletDiv("2")
+    array_spaces=delletDiv("1")
+
+    
+}
+
+
+
+
+//JSONtoMap(json);
+
+var lastmovetime = Date.now();
+selected=[0,0,0];
+
+oldselect=[0,0,0];
+
+
+function MaptoJSON(){
+    jsontext="";
+    mytext="";
+    for (let i = 0; i < array_spaces.length; i++) {
+
+    for (let k = 0; k < array_spaces[i].length; k++) {
+        jsontext += array_spaces[i][k]+"(???M???)";
+      };
+    }
+    jsontext.replace('"', '\\\"')
+
+    mymaptext=jsontext;
+
+    getimgs();
+    mymaptext+=myaddtomap;
+
+
+
+    myadd = mymaptext;
+
+    document.getElementById("HTML").value=myadd;
+
+
+
+}
+function post_responce(path,func,varible){
+    fetch(path).then(
+    ( response) => {
+    return response.text();
+    })
+    .then((html) => {
+    func( html.trim() , varible )
+    });
+}
+//post_responce("comand",funtion,"var")
+
+function SaveMaptoJSON(){
+    jsontext="";
+    mytext="";
+    for (let i = 0; i < array_spaces.length; i++) {
+
+    for (let k = 0; k < array_spaces[i].length; k++) {
+        jsontext += array_spaces[i][k]+"(???M???)";
+      };
+    }
+    jsontext.replace('"', '\\\"')
+
+    mymaptext=jsontext;
+
+    getimgs();
+    mymaptext+=myaddtomap;
+
+    mymaptext=mymaptext.replaceAll('"', '(___P___)');
+    mymaptext=mymaptext.replaceAll('/', '(___F___)');
+    mymaptext=mymaptext.replaceAll('\\','(___B___)');
+    mymaptext=mymaptext.replaceAll(':', '(___C___)');
+    mymaptext=mymaptext.replaceAll('=', '(___E___)');
+    mymaptext=mymaptext.replaceAll(' ', '(___S___)');
+    mymaptext=mymaptext.replaceAll('<', '(___2___)');
+    mymaptext=mymaptext.replaceAll('>', '(___1___)');
+     mymaptext=mymaptext.replaceAll('|', '(___I___)');
+    mymaptext=mymaptext.replaceAll('?', '|');
+    mymaptext=mymaptext.replaceAll('&', '(___A___)');
+
+    myadd = mymaptext;
+
+
+
+
+    //u1_mygameqjveaeaqcxsewfrsnsgw
+    //post_responce("http://localhost:8000/doit?user=&action_type=add_post&password=&text="+myadd ,postmap,"")
+
+
+
+}
+function postmap(A,B){
+console.log(A);
+
+value = JSON.parse(A);
+document.getElementById("HTML").value="http://localhost:8000/doit?action_type=makepage&usertemplate_name=u1_mygameqjveaeaqcxsewfrsnsgw&var1=&rep=&setion="+value['id']
+
+value['id'];
+
+}
+
+
+mytext="";
+
+var playerposx=0;
+var playerposy=0;
+var playerposz=0;
+
+
+
+function get_space(){
+    mytext="";
+    for (let i = 0; i < array_spaces.length; i++) {
+      mytext += addspace(array_spaces[i]);
+    }
+    return mytext+addplayer();
+}
+mydata = "";
+
+mytext=get_space();
+document.getElementById("sean").innerHTML+=mytext;
+
+
+
+function get_spot_by_pos(spot) {
+    for (let i = 0; i < array_spaces.length; i++) {
+        if (array_spaces[i][1]==spot[0] && array_spaces[i][2]==spot[1] && array_spaces[i][3]==spot[2] && array_spaces[i][4]==spot[3]){
+            return array_spaces[i][0];
+        }
+      
+    }
+    return -1;
+}
+mode=1;
+valueold=[0,0,0,3];
+adedvalue=[-1,0,0,0];
+holdingvlaue=-1;
+function getNewID_For_div() {
+    maxvalue=-100;
+    for (let i = 0; i < array_spaces.length; i++) {
+        try {
+            if (maxvalue <= parseInt(array_spaces[i][0])){
+                maxvalue=parseInt(array_spaces[i][0]);
+            }
+        }catch (error) {}
+    }
+    maxvalue++;
+    return maxvalue;
+}
+
+
+
+var playerz=0;
+var playery=0;
+var playerx=0;
+
+var newplayerz=0;
+var newplayery=0;
+var newplayerx=0;
+function addplayer(argument) {
+
+    return "<div onclick=\"selectDIV('player1','black',0);\" id=\"player1\" style=\"width: 100px; height: 100px; position: absolute;transform-origin: 0px 0px 0px; transform: translate3d("+(playerx+100)+"px, "+(playery-100)+"px, "+(playerz+50)+"px) rotateY(-45deg) rotateX(0deg); \"   >  <img src=\""+F1S+"\" id=\"play\" alt=\"X+\" width=\"100%\" height=\"100%\"> </div>";
+}
+//
+
+function update() {
+    if (mode==0) {
+        moveforward(direction,speed);
+    };
+
+    if (mode==2){
+        //console.log("in here now");
+        moveplayer(direction,speed);
+
+    }
+}
+var jumper = 0;
+var falling = 0;
+function jump() {
+    jumper=30;
+}
+
+function fall() {
+    // emote;
+
+}
+
+animation_counter = 0;
+maxwalk =2;
+maxleft=2;
+maxjumpleft=1;
+maxjumpright=1;
+const d = new Date();
+
+haschaged = false;
+mydir="";
+anicounter=0;
+
+function changephoto() {
+anicounter+=1;
+
+    if (landed==false) {
+        document.getElementById("play").src=FJ;
+        return;
+
+    };
+    if (mydir=="none") {
+        if (anicounter%2==0){
+         document.getElementById("play").src=F1S;
+         }   
+         else{
+            document.getElementById("play").src=F2S;
+
+         }
+         return;
+    }
+
+
+
+    if ("z-"==mydir) {
+        if (anicounter%2==0){
+         document.getElementById("play").src=FL1;
+         }   
+         else{
+            document.getElementById("play").src=FL2;
+         }
+         return;
+
+    };
+
+    if ("z+"==mydir) {
+        if (anicounter%2==0){
+         document.getElementById("play").src=FR2;
+         }   
+         else{
+            document.getElementById("play").src=FR1;
+         }
+         return;
+
+    };
+
+
+    if ("x+"==mydir) {
+        if (anicounter%2==0){
+         document.getElementById("play").src=FL1;
+         }   
+         else{
+            document.getElementById("play").src=FL2;
+         }
+         return;
+
+    };
+
+    if ("x-"==mydir) {
+        if (anicounter%2==0){
+         document.getElementById("play").src=FR2;
+         }   
+         else{
+            document.getElementById("play").src=FR1;
+         }
+         return;
+
+    };
+
+
+
+
+
+}
+
+function moveplayer(direction,speed) {
+    //console.log("in here no2");
+    mydir=direction;
+
+
+
+    timenow= Date.now();
+    distrance = (timenow-lastmovetime)*speed;
+    newplayerz=playerz;
+    newplayery=playery;
+    newplayerx=newplayerx;
+
+    newcameraz=cameraz;
+    newcameray=cameray;
+    newcamerax=camerax;
+    if (direction=="none") {lastmovetime = timenow;}
+    if (direction=="x+"){newcamerax+=distrance; newplayerx-=distrance;}
+    if (direction=="x-"){newcamerax-=distrance; newplayerx+=distrance;}
+    if (direction=="z-"){newcameraz+=distrance; newplayerz-=distrance;}
+    if (direction=="z+"){newcameraz-=distrance; newplayerz+=distrance;}
+    if (direction=="r-"){roty-=distrance/20;}
+    if (direction=="r+"){roty+=distrance/20;}
+    if (roty>=40) {roty=40;}
+    if (roty<=20) {roty=20;}
+if (jumper>=-20){
+    jumper+=-distrance/10;
+}
+
+
+newcameray+=distrance*jumper/10;
+newplayery+=-distrance*jumper/10;
+
+
+
+//falling
+onserface(distrance);
+
+
+
+
+
+//playery=newplayery;
+//physics
+
+    document.getElementsByClassName("camera")[0].style.transform = "rotateX("+rotx+"deg) rotateY("+roty+"deg) translate3d("+camerax+"px,"+cameray+"px,"+cameraz+"px)";
+
+    document.getElementById("player1").style.transform = "translate3d("+(playerx+100)+"px, "+(playery-100)+"px, "+(playerz+50)+"px) rotateY(-45deg)";
+
+
+    lastmovetime = timenow;
+
+}
+//+="<div id=\"plane3\"></div>";
+modechange();
+modechange();
+
+modechange();
+modechange();
+modechange();
+
+
+console.log(array_spaces);
+function onserface(distrance){
+
+    playerx;
+    playerz;
+    playery;
+    newplayery;
+    landed=false;
+    for (let i = 0; i < array_spaces.length; i++) {
+        if (array_spaces[i][1]==Math.floor((playerx+130)/300) && array_spaces[i][3]==Math.floor( (playerz+130)/300) && array_spaces[i][2]==Math.floor((playery+0)/300) && array_spaces[i][4]==0 )  {
+            landed=true;
+        };
+    }
+    if (landed) {
+        if (jumper<=0) {
+            jumper=0;
+        }
+        else{
+            cameray=newcameray;
+            playery=newplayery;
+        }
+    }
+    else{
+            cameray=newcameray;
+            playery=newplayery;
+    }
+
+
+    wallx=false;
+    for (let i = 0; i < array_spaces.length; i++) {
+        if (array_spaces[i][1]==Math.floor((playerx+130)/300) && array_spaces[i][3]==Math.floor( (playerz+130)/300) && array_spaces[i][2]==Math.floor((playery+0)/300) && array_spaces[i][4]==1 )  {
+            if ( Math.floor((playerz+130)/300-0.2)!=Math.floor((playerz+130)/300) ) {
+                wallx=true;
+            };
+        };
+    }
+    if (wallx==true){
+        if (cameraz>=newcameraz){
+            cameraz=newcameraz;
+            playerz=newplayerz;
+        }
+        else{}
+    }
+    else{cameraz=newcameraz;playerz=newplayerz;}
+
+    wally=false;
+    for (let i = 0; i < array_spaces.length; i++) {
+        if ((array_spaces[i][1])==Math.floor((playerx+130-300)/300) && array_spaces[i][3]==Math.floor( (playerz+130)/300) && array_spaces[i][2]==Math.floor((playery+0)/300) && array_spaces[i][4]==2 )  {
+            if ( Math.floor((playerx+130)/300-0.2)!=Math.floor((playerx+130)/300) ) {
+                wally=true;
+            };
+        };
+
+
+    }
+    if (wally==true){
+        if (playerx>=newplayerx){
+            camerax=newcamerax;
+            playerx=newplayerx;
+        }
+        else{}
+    }
+    else{camerax=newcamerax;playerx=newplayerx;}
+}
+
+
+</script>
+
+
+
+
+ 
+</body>
+</html>
